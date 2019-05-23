@@ -21,6 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="body-content">
         <div class="row">
-         <h1>sfjidsjfs9d</h1>
+         
     </div>
 </div>

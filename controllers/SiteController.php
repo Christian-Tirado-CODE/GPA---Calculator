@@ -10,6 +10,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntryForm;
+use app\models\UserForm;
+use app\models\CalcGPA;
 
 
 class SiteController extends Controller
@@ -150,6 +152,25 @@ class SiteController extends Controller
             return $this->render('entry', ['model' => $model]);
         }
     }
+
+    public function actionRoutes() {
+        return $this->render('routes');
+     }
+
+     public function actionGpa()
+   {
+       $model = new calcGPA();
+
+       return $this->render('calcgpa', ['model' => $model]);
+       /*http://localhost:8080/index.php?r=site/gpa */
+   }
+
+   public function actionUser(){
+       $model = new UserForm();
+       if($model->load(Yii::$app->request->post()) && $model->validate()){
+
+    } else {
+        return $this->render('userForm', ['model' => $model]);
+   }
+ }
 }
-
-
