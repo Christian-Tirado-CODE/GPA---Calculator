@@ -1,40 +1,135 @@
 html,
 body {
     height: 100%;
+   
 }
 
+
+
+/*LAYOUT*/
+
+.p-2 {padding: 2rem;}
+.mt-5{border-radius: 1.5rem;}
+.mt-5 {
+    margin-top: 8rem;
+    background-color: white;
+}
+.center {
+    width: 50%;
+    margin: auto !important;
+    text-align: center;
+}
+.name-email{
+margin: 3rem 0;
+font-size: 2rem;
+}
 .wrap {
     min-height: 100%;
-    height: auto;
+    height: 100%;
     margin: 0 auto -60px;
     padding: 0 0 60px;
+    background-color: #101010;
 }
+
 
 .wrap > .container {
     padding: 70px 15px 20px;
+    height: 100%;
+    
 }
+.col-lg-5 {
+    margin: auto;
+    width: 100%;
+}
+.col-lg-2{
+    width: 20%;
+    margin: auto;
+}
+
+
+.site-index{
+    color: rgba(255,255,255,0.8);
+    
+  
+}
+.back-img {    background-image: url('../../assets/img/upra-logo.png') no-repeat fixed center;
+    background-size: cover;
+    height: 100%;
+   }
+   
+   /*BUTTON STYLING*/
+
+.btn {background-color: #ffc412; color: black;}
+.btn-center {width: 50%; margin: auto;}
+.btn-form{width: 100%; margin-top: 3rem; padding: 1.5rem;}
+.btn-form:hover{background-color: #daa300;}
+.alert {margin: 2rem 0 0 0;}
 
 .footer {
     height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
+    background-color: #ffc412;
+    position: relative;
+    bottom: 0;
     padding-top: 20px;
 }
+ 
+/*PANEL FROM ENTRY-CONFIRM PAGE*/
+
+.panel {margin-top: 200px;}
+.panel-heading{
+     margin: auto;
+     font-size: 2rem;
+     font-weight: 500;
+     border-bottom: solid rgba(150, 149, 148, 0.5) 1px;
+     padding: 3rem;
+     background-color: #f7f5f3;
+     width: 100%;
+     text-align: center;
+ }
+
+ .panel-body {
+ 
+}
+
+/*FORM*/
+
+.form-header {
+    background-color: #ffc412;
+    width: 100%;
+    padding: 2rem;
+    font-size: 4rem;
+    text-align: center;
+}
+.hidden{
+    display: none;
+}
+
+
+
+
+
+
+
 
 .jumbotron {
     text-align: center;
     background-color: transparent;
+    border: solid #daa300 5px;
+    margin-top: 200px;
 }
 
 .jumbotron .btn {
     font-size: 21px;
     padding: 14px 24px;
+    margin-top: 30px;
 }
 
 .not-set {
     color: #c55;
     font-style: italic;
 }
+
+
 
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {

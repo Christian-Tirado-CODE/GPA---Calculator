@@ -3,24 +3,24 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use kartik\spinner\Spinner;
+use yii\helpers\Url;
 
-
-
-$this->title = 'My Yii Application';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'UPRA GPA-CALCULATOR ';
 ?>
-<div class="site-index">
+<div class="site-index back-img">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    <?= Html::img('../assets/img/upra-logo.jpg');?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+    
+    
+    <h1>Welcome!</h1>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
 
-    <div class="body-content">
-        <div class="row">
-         
+
+        <p class="lead">Feel free to use our university's gpa calculator.</p>
+
+        <p><a class="btn btn-lg" href= <?= Url::to(['site/entry']);?>>Find out your GPA!</a></p>
     </div>
 </div>

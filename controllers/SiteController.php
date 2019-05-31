@@ -12,7 +12,9 @@ use app\models\ContactForm;
 use app\models\EntryForm;
 use app\models\UserForm;
 use app\models\CalcGPA;
-
+use app\models\EntryForm2;
+use yii\helpers\Url;
+use app\models\AddToPostQueue;
 
 class SiteController extends Controller
 {
@@ -68,57 +70,8 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
 
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
 
     /**
      * Displays about page.
@@ -127,50 +80,36 @@ class SiteController extends Controller
      */
 
     
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
-     /* Hello action*/
-    public function actionSay($message = 'Hello')
-    {
-        return $this->render('say', ['message' => $message]);
-    }
+   
+
+    
     /* EntryForm action*/
+
     public function actionEntry()
     {
         $model = new EntryForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            // valid data received in $model
-
-            // do something meaningful here about $model ...
-
-            return $this->render('entry-confirm', ['model' => $model]);
-        } else {
-            // either the page is initially displayed or there is some validation error
+         
+            
+            if( $model->load(Yii::$app->request->post()) ){
+                if( $model->save(false) ){
+                    return $this->render('entry-confirm', ['model' => $model]);
+                }
+            }
             return $this->render('entry', ['model' => $model]);
-        }
     }
 
-    public function actionRoutes() {
-        return $this->render('routes');
-     }
 
-     public function actionGpa()
-   {
-       $model = new calcGPA();
-
-       return $this->render('calcgpa', ['model' => $model]);
+       //return $this->render('calcgpa', ['model' => $model]);
        /*http://localhost:8080/index.php?r=site/gpa */
-   }
-
-   public function actionUser(){
-       $model = new UserForm();
-       if($model->load(Yii::$app->request->post()) && $model->validate()){
-
+   
+public function actionNewPost(){
+    if(Yii::$app->queue->delay(10)->push(new AddToPostQueue())){
+        echo 'Ok';
     } else {
-        return $this->render('userForm', ['model' => $model]);
-   }
- }
+        echo 'Not Okay';
+    }
 }
+
+}
+
+
